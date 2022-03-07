@@ -14,11 +14,25 @@ var GroceryList = (props) => (
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      hover: false
+    };
+  }
+
+  onHover() {
+    this.setState({
+      hover: true
+    });
   }
 
   render() {
+    var style = {
+      fontWeight: this.state.hover ? 'bold' : 'none'
+    };
+
     return (
-      <li>{this.props.item}</li>
+      <li style={style} onMouseOver={this.onHover.bind(this)}>{this.props.item}</li>
     );
   }
 }
